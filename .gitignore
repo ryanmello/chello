@@ -1,0 +1,54 @@
+# --- Angular / Node ---
+dist/
+tmp/
+out-tsc/
+bazel-out/
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Angular cache
+.angular/cache
+
+# Coverage / testing
+coverage/
+libpeerconnection.log
+testem.log
+
+# Typings
+typings/
+
+# --- .NET / C# ---
+bin/
+obj/
+.vs/
+
+# User-specific files
+*.user
+*.suo
+
+# ASP.NET generated files
+wwwroot/
+
+# --- IDEs / Editors ---
+.idea/
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# VS Code
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# --- System ---
+.DS_Store
+Thumbs.db
+
+# --- Env files ---
+.env
