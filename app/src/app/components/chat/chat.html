@@ -1,48 +1,37 @@
-<div class="flex flex-col items-center justify-center p-12">
-  <h1 class="text-3xl font-semibold">Chat with Ryan's AI</h1>
-  <p class="mt-2 text-gray-500">Ask about experience, skills, projects, or anything else!</p>
+<div class="flex flex-col items-center justify-center p-20">
+  <h1 class="text-3xl font-semibold mb-2">Chat with Ryan's AI</h1>
+  <p>Ask about experience, skills, projects, or anything else!</p>
 
-  <div class="mt-8 w-full max-w-4xl rounded-xl border border-gray-200 shadow-sm">
-    <!-- Header -->
-    <div class="flex items-center justify-between px-4 py-3 border-b border-gray-200">
-      <span class="text-sm text-gray-500">Thread #{{ threadId }}</span>
-      <button class="text-sm rounded-md border px-2 py-1 hover:bg-gray-50">New chat</button>
-    </div>
-
-    <!-- Messages -->
-    <div class="p-4 space-y-3 h-[22rem] overflow-y-auto">
-      <!-- AI -->
-      <div class="flex">
-        <div class="max-w-[80%] rounded-2xl bg-gray-100 px-3 py-2">
-          Hi! I'm Ryan's AI. Ask about experience, skills, or projects.
+  <section class="mt-8 w-full flex justify-center">
+    <div class="w-full max-w-2xl border rounded-lg p-4 flex flex-col gap-4">
+      <!-- Messages -->
+      <div class="min-h-48 max-h-96 overflow-y-auto space-y-3">
+        @for (m of messages(); track $index) {
+        <div class="flex" [class.justify-end]="m.role === 'user'">
+          <div
+            class="px-3 py-2 rounded-xl max-w-[80%]"
+            [class.bg-gray-100]="m.role === 'ai'"
+            [class.bg-blue-600]="m.role === 'user'"
+            [class.text-white]="m.role === 'user'"
+          >
+            {{ m.text }}
+          </div>
         </div>
+        }
       </div>
 
-      <!-- User -->
-      <div class="flex justify-end">
-        <div class="max-w-[80%] rounded-2xl bg-blue-600 text-white px-3 py-2">
-          What did Ryan build at Visa?
-        </div>
-      </div>
-
-      <!-- AI -->
-      <div class="flex">
-        <div class="max-w-[80%] rounded-2xl bg-gray-100 px-3 py-2">
-          He architected an agentic operating system called Cipher…
-        </div>
-      </div>
-    </div>
-
-    <!-- Input -->
-    <div class="p-4 border-t border-gray-200">
+      <!-- Input -->
       <div class="flex gap-2">
         <input
+          #box
           type="text"
-          placeholder="Type a message…"
-          class="flex-1 rounded-lg border border-gray-300 px-3 py-2 outline-none focus:ring-2 focus:ring-blue-500"
+          class="flex-1 rounded-md border px-3 py-2 outline-none focus:ring-2 focus:ring-blue-500"
+          (keydown.enter)="handleSend(box)"
         />
-        <button class="rounded-lg border px-4 py-2 hover:bg-gray-50">Send</button>
+        <button class="rounded-md border px-4 py-2 hover:bg-gray-50" (click)="handleSend(box)">
+          Send
+        </button>
       </div>
     </div>
-  </div>
+  </section>
 </div>
