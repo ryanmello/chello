@@ -1,3 +1,4 @@
+using backend;
 using backend.Data;
 using Microsoft.EntityFrameworkCore;
 
@@ -13,6 +14,7 @@ builder.Services.AddDbContext<DataContext>(options =>
 {
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
+builder.Services.AddAutoMapper(cfg => cfg.AddProfile<MappingConfig>());
 
 var app = builder.Build();
 
