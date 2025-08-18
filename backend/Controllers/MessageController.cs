@@ -1,9 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using backend.Models;
-using backend.Data;
-using Microsoft.EntityFrameworkCore;
 using backend.Models.DTO;
-using AutoMapper;
 using backend.Services.Interfaces;
 
 namespace backend.Controllers
