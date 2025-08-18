@@ -1,5 +1,7 @@
 using backend;
 using backend.Data;
+using backend.Services;
+using backend.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -15,6 +17,7 @@ builder.Services.AddDbContext<DataContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
 builder.Services.AddAutoMapper(cfg => cfg.AddProfile<MappingConfig>());
+builder.Services.AddScoped<IMessageService, MessageService>();
 
 var app = builder.Build();
 
