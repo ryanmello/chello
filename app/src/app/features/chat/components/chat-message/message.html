@@ -1,0 +1,10 @@
+<div class="flex" [class.justify-end]="m().role === 'user'">
+  <div
+    class="px-3 py-2 rounded-xl max-w-[80%]"
+    [class.bg-gray-100]="m().role === 'ai'"
+    [class.bg-blue-600]="m().role === 'user'"
+    [class.text-white]="m().role === 'user'"
+  >
+    {{ m().text }}
+  </div> 
+</div>

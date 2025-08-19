@@ -1,0 +1,14 @@
+<div class="flex gap-2">
+  <input
+    #box
+    type="text"
+    class="flex-1 rounded-md border px-3 py-2 outline-none"
+    (keydown.enter)="handleSend(box)"
+  />
+  <button
+    class="rounded-md border px-4 py-2 hover:bg-gray-50 cursor-pointer"
+    (click)="handleSend(box)"
+  >
+    Send
+  </button>
+</div>
