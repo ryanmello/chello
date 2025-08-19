@@ -8,7 +8,7 @@ npm-debug.log
 yarn-error.log
 
 # Angular cache
-.angular/cache
+.angular/
 
 # Coverage / testing
 coverage/

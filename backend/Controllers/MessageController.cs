@@ -19,13 +19,16 @@ namespace backend.Controllers
         [HttpGet]
         public async Task<ActionResult<List<UserMessage>>> GetMessages()
         {
-            return await _messageService.GetUserMessages();
+            var data = await _messageService.GetUserMessages();
+            return Ok(data);
         }
 
         [HttpPost]
         public async Task<ActionResult<List<UserMessage>>> SendMessage(UserMessageCreateDTO message)
         {
-            return await _messageService.SendMessage(message);
+
+            var data = await _messageService.SendMessage(message);
+            return Ok(data);
         }
     }
 }
