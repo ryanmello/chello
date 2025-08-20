@@ -26,18 +26,15 @@ export class Chat {
     this.generateReply(text);
   }
 
-  private generateReply(prompt: string): void {
+  private generateReply(message: string): void {
     const body: UserMessageCreateDTO = {
       userId: 1,
-      prompt: prompt
+      message: message
     }
     
     this.chatService.sendMessage(body).subscribe({
-      next: (response) => {
-        const lastMessage = response[response.length - 1];
-        const reply = lastMessage?.prompt || 'No response';
-        
-        this.messages.update((list) => [...list, { role: 'ai', text: reply }]);
+      next: (response) => {        
+        this.messages.update((list) => [...list, { role: 'ai', text: response.message }]);
       },
       error: (error) => {
         console.error('Error sending message:', error);

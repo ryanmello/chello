@@ -4,6 +4,6 @@ namespace backend.Models
     {
         public int Id { get; set; }
         public int UserId { get; set; } = 1;
-        public string? Prompt { get; set; }
+        public string? Message { get; set; }
     }
 }

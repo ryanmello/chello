@@ -1,4 +1,5 @@
 using backend;
+using backend.Config;
 using backend.Data;
 using backend.Services;
 using backend.Services.Interfaces;
@@ -26,7 +27,12 @@ builder.Services.AddDbContext<DataContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
 builder.Services.AddAutoMapper(cfg => cfg.AddProfile<MappingConfig>());
+
 builder.Services.AddScoped<IMessageService, MessageService>();
+
+builder.Services.AddSingleton<IOpenAIService, OpenAIService>();
+
+builder.Services.Configure<OpenAIOptions>(builder.Configuration.GetSection("OpenAI"));
 
 var app = builder.Build();
 

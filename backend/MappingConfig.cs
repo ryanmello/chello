@@ -9,7 +9,6 @@ namespace backend
         public MappingConfig()
         {
             CreateMap<UserMessage, UserMessageCreateDTO>().ReverseMap();
-            CreateMap<ChelloMessage, ChelloMessageCreateDTO>().ReverseMap();
         }
     }
 }
