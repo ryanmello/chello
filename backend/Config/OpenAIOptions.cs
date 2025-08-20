@@ -10,3 +10,4 @@
         public bool Stream { get; set; } = false;
     }
 }
+ 

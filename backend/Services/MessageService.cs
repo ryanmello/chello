@@ -20,13 +20,11 @@ namespace backend.Services
             _openAIService = openAIService;
         }
 
-        string resume = "Ryan Mello is a Software Engineer Intern at Tesla working on Robotaxi Software.";
-
         public async Task<ChelloMessage> SendMessage(UserMessageCreateDTO message)
         {
             var userMessage = _mapper.Map<UserMessage>(message);
 
-            var response = await _openAIService.GetResponseAsync($"This is the resume: {resume}. Please respond to the users question: {message.Message}");
+            var response = await _openAIService.GetResponseAsync($"This is the resume: {Constants.Resume}. Please respond to the users question: {message.Message}");
 
             var chelloMessage = new ChelloMessage
             {

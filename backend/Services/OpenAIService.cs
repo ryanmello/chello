@@ -14,7 +14,7 @@ namespace backend.Services
         public OpenAIService(IOptions<OpenAIOptions> options) 
         { 
             _options = options.Value;
-            _client = new ChatClient("gpt-4o", _options.ApiKey);
+            _client = new ChatClient(_options.Model, _options.ApiKey);
         }
 
         public async Task<string> GetResponseAsync(string userMessage)
