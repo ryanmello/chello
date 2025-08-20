@@ -7,11 +7,11 @@ namespace backend.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class MessageController : ControllerBase
+    public class MessagesController : ControllerBase
     {
         private readonly IMessageService _messageService;
 
-        public MessageController(IMessageService messageService)
+        public MessagesController(IMessageService messageService)
         {
             _messageService = messageService;
         }

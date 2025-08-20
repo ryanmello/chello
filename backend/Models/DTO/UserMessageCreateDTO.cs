@@ -3,6 +3,6 @@
     public class UserMessageCreateDTO
     {
         public int UserId { get; set; } = 1;
-        public string? Text { get; set; }
+        public string? Prompt { get; set; }
     }
 }
