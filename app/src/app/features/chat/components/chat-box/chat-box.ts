@@ -34,11 +34,9 @@ export class Chat {
     
     this.chatService.sendMessage(body).subscribe({
       next: (response) => {
-        console.log('API response:', response);
         const lastMessage = response[response.length - 1];
         const reply = lastMessage?.prompt || 'No response';
         
-        // Add AI response to messages
         this.messages.update((list) => [...list, { role: 'ai', text: reply }]);
       },
       error: (error) => {
