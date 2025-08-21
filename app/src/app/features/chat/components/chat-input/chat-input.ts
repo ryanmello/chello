@@ -1,8 +1,10 @@
 import { Component, EventEmitter, Output } from '@angular/core';
+import { HlmButton } from '@spartan-ng/helm/button';
+import { HlmInput } from '@spartan-ng/helm/input';
 
 @Component({
   selector: 'app-chat-input',
-  imports: [],
+  imports: [HlmButton, HlmInput],
   templateUrl: './chat-input.html',
   styles: ``,
 })
