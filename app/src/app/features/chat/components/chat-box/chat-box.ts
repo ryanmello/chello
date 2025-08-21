@@ -4,10 +4,11 @@ import { ChatMessage } from '../chat-message/message';
 import { ChatMessage as ChatMessageT, UserMessageCreateDTO } from '../../models/models';
 import { ChatInput } from '../chat-input/chat-input';
 import { ChatService } from '../../services/chat.service';
+import { HlmCard, HlmCardContent } from '@spartan-ng/helm/card';
 
 @Component({
   selector: 'app-chat-box',
-  imports: [ChatMessage, ChatInput],
+  imports: [ChatMessage, ChatInput, HlmCard, HlmCardContent],
   templateUrl: './chat-box.html',
   styles: ``,
 })
