@@ -23,13 +23,13 @@ namespace backend.Services
         public async Task<Message> CreateMessage(MessageCreateDTO dto)
         {
             var userMessage = _mapper.Map<Message>(dto);
+            userMessage.IsHumanMessage = true;
 
             var response = await _openAIService.GetResponseAsync($"This is the resume: {Constants.Resume}. Please respond to the users question: {dto.Content}");
 
             var chelloMessage = new Message
             {
                 ThreadId = userMessage.ThreadId,
-                UserId = userMessage.UserId,
                 Content = response,
                 IsHumanMessage = false,
             };
@@ -49,7 +49,6 @@ namespace backend.Services
                 return new Message
                 {
                     ThreadId = userMessage.ThreadId,
-                    UserId = userMessage.UserId,
                     Content = "No messages found.",
                     IsHumanMessage = false,
                 };

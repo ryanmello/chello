@@ -1,5 +1,5 @@
 import { Component, input } from '@angular/core';
-import { ChatMessage as ChatMessageT } from '../../models/models';
+import { UIMessage } from '../../../models/models';
 
 @Component({
   selector: 'app-chat-message',
@@ -8,5 +8,5 @@ import { ChatMessage as ChatMessageT } from '../../models/models';
   styles: ``,
 })
 export class ChatMessage {
-  m = input.required<ChatMessageT>();
+  m = input.required<UIMessage>();
 }

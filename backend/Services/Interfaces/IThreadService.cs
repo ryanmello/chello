@@ -1,8 +1,11 @@
-﻿namespace backend.Services.Interfaces
+﻿using backend.Models.DTO;
+
+namespace backend.Services.Interfaces
 {
     public interface IThreadService
     {
         Task<Models.Thread?> GetThread(int threadId);
-        Task<Models.Thread> CreateThread(int userId, string title);
+        Task<List<Models.Thread>> GetThreads(int userId);
+        Task<Models.Thread> CreateThread(MessageCreateDTO dto);
     }
 }

@@ -21,10 +21,6 @@ namespace backend.Controllers
         [HttpGet]
         public async Task<ActionResult<List<Message>>> GetMessages([FromQuery] MessageReadDTO dto)
         {
-            if (dto.UserId == null && dto.ThreadId == null)
-            {
-                return BadRequest("Invalid request data. Please include UserId and/or ThreadId.");
-            }
             var data = await _messageService.GetMessages(dto);
             return Ok(data);
         }
@@ -42,7 +38,7 @@ namespace backend.Controllers
         {
             if (dto.ThreadId == null)
             {
-                var thread = await _threadService.CreateThread(dto.UserId, dto.Content.Substring(0, 20));
+                var thread = await _threadService.CreateThread(dto);
                 dto.ThreadId = thread.Id;
             }
 
