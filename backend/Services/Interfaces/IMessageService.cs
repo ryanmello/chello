@@ -5,8 +5,8 @@ namespace backend.Services.Interfaces
 {
     public interface IMessageService
     {
-        Task<ChelloMessage> SendMessage(UserMessageCreateDTO message);
-        Task<List<UserMessage>> GetUserMessages();
-        Task<List<ChelloMessage>> GetChelloMessages();
+        Task<List<Message>> GetMessages(MessageReadDTO dto);
+        Task<Message?> GetMessage(int id);
+        Task<Message> CreateMessage(MessageCreateDTO dto);
     }
 }

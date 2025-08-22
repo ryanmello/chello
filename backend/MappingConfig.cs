@@ -8,7 +8,7 @@ namespace backend
     {
         public MappingConfig()
         {
-            CreateMap<UserMessage, UserMessageCreateDTO>().ReverseMap();
+            CreateMap<Message, MessageCreateDTO>().ReverseMap();
         }
     }
 }

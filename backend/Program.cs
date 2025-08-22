@@ -29,6 +29,8 @@ builder.Services.AddDbContext<DataContext>(options =>
 builder.Services.AddAutoMapper(cfg => cfg.AddProfile<MappingConfig>());
 
 builder.Services.AddScoped<IMessageService, MessageService>();
+builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IThreadService, ThreadService>();
 
 builder.Services.AddSingleton<IOpenAIService, OpenAIService>();
 

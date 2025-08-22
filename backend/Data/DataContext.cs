@@ -1,17 +1,17 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using backend.Models;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace backend.Data
 {
-    public class DataContext : IdentityDbContext
+    public class DataContext : DbContext
     {
         public DataContext(DbContextOptions<DataContext> options) : base(options)
         { 
             
         }
 
-        public DbSet<UserMessage> UserMessages { get; set; }
-        public DbSet<ChelloMessage> ChelloMessages { get; set; }
+        public DbSet<User> Users { get; set; }
+        public DbSet<Models.Thread> Threads { get; set; }
+        public DbSet<Message> Messages { get; set; }
     }
 }

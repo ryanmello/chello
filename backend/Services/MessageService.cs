@@ -20,49 +20,53 @@ namespace backend.Services
             _openAIService = openAIService;
         }
 
-        public async Task<ChelloMessage> SendMessage(UserMessageCreateDTO message)
+        public async Task<Message> CreateMessage(MessageCreateDTO dto)
         {
-            var userMessage = _mapper.Map<UserMessage>(message);
+            var userMessage = _mapper.Map<Message>(dto);
 
-            var response = await _openAIService.GetResponseAsync($"This is the resume: {Constants.Resume}. Please respond to the users question: {message.Message}");
+            var response = await _openAIService.GetResponseAsync($"This is the resume: {Constants.Resume}. Please respond to the users question: {dto.Content}");
 
-            var chelloMessage = new ChelloMessage
+            var chelloMessage = new Message
             {
-                Message = response,
-                UserId = message.UserId
+                ThreadId = userMessage.ThreadId,
+                UserId = userMessage.UserId,
+                Content = response,
+                IsHumanMessage = false,
             };
 
-            _context.UserMessages.Add(userMessage);
-            _context.ChelloMessages.Add(chelloMessage);
+            _context.Messages.Add(userMessage);
+            _context.Messages.Add(chelloMessage);
 
             await _context.SaveChangesAsync();
 
-            var last = await _context.ChelloMessages
+            var last = await _context.Messages
                 .AsNoTracking()
                 .OrderByDescending(m => m.Id)
                 .FirstOrDefaultAsync();
 
             if (last == null)
             {
-                return new ChelloMessage
+                return new Message
                 {
-                    Message = "No messages found.",
-                    UserId = message.UserId
+                    ThreadId = userMessage.ThreadId,
+                    UserId = userMessage.UserId,
+                    Content = "No messages found.",
+                    IsHumanMessage = false,
                 };
             }
 
             return last;
         }
 
-        public async Task<List<UserMessage>> GetUserMessages()
+        public Task<Message?> GetMessage(int id)
         {
-            var messages = await _context.UserMessages.ToListAsync();
-            return messages;
+            var message = _context.Messages.AsNoTracking().FirstOrDefaultAsync(m => m.Id == id);
+            return message;
         }
 
-        public async Task<List<ChelloMessage>> GetChelloMessages()
+        public async Task<List<Message>> GetMessages(MessageReadDTO dto)
         {
-            var messages = await _context.ChelloMessages.ToListAsync();
+            var messages = await _context.Messages.ToListAsync();
             return messages;
         }
     }
