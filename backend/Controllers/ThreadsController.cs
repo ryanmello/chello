@@ -1,4 +1,5 @@
 ﻿using backend.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace backend.Controllers
@@ -15,6 +16,7 @@ namespace backend.Controllers
         }
 
         [HttpGet("{threadId}")]
+        [Authorize]
         public async Task<ActionResult<Models.Thread>> GetThread(int threadId)
         {
             var thread = await _threadService.GetThread(threadId);
@@ -28,7 +30,8 @@ namespace backend.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<Models.Thread>>> GetThreads([FromQuery] int userId)
+        [Authorize]
+        public async Task<ActionResult<List<Models.Thread>>> GetThreads([FromQuery] string userId)
         {
             return await _threadService.GetThreads(userId);
         }

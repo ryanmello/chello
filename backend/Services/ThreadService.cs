@@ -27,7 +27,7 @@ namespace backend.Services
             return thread;
         }
 
-        public async Task<List<Models.Thread>> GetThreads(int userId)
+        public async Task<List<Models.Thread>> GetThreads(string userId)
         {
             var threads = await _context.Threads
                 .AsNoTracking()
