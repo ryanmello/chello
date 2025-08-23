@@ -1,7 +1,12 @@
 <div class="flex flex-col h-screen w-64 bg-background border-r border-border">
   <!-- Header -->
   <div class="p-4 border-b border-border">
-    <button hlmBtn variant="ghost" class="flex items-center w-full justify-start">
+    <button
+      hlmBtn
+      variant="ghost"
+      class="flex items-center w-full justify-start"
+      (click)="onNewChat()"
+    >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
@@ -29,7 +34,7 @@
         <h3 class="text-xs font-medium text-muted-foreground uppercase tracking-wider">Recent</h3>
       </div>
       <div class="space-y-1">
-        @for (thread of threads; track $index) {
+        @for (thread of threads(); track $index) {
         <app-sidebar-link [thread]="thread"></app-sidebar-link>
         }
       </div>
