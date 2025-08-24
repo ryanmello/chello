@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
+import { HlmButton } from '@spartan-ng/helm/button';
 
 @Component({
   selector: 'app-sign-up',
-  imports: [],
+  imports: [RouterLink, HlmButton],
   templateUrl: './sign-up.html',
   styles: ``
 })
